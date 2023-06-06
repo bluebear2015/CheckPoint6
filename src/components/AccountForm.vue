@@ -6,25 +6,53 @@
     <input name="name" class="form-control" placeholder="Name" type="text" required v-model="editable.name">
      <label for="name">Name:</label>
         </div>
+
+       
+ <div class="form-floating mb-3">
+    <input name="class" class="form-control" placeholder="class" type="text" required v-model="editable.class">
+     <label for="class">Class:</label>
+        </div>
+
+
+
+
+        <div class="form-floating mb-3">
+    <input name="profileName" class="form-control" placeholder="email" type="text" required v-model="editable.email">
+     <label for="email">Email:</label>
+        </div>
+
+        <div class="form-floating mb-3">
+    <input name="bio" class="form-control" placeholder="bio" type="text" required v-model="editable.bio">
+     <label for="bio">Bio:</label>
+        </div>
+
+
 <div class="form-floating mb-3">
     <input name="picture" class="form-control" placeholder="Profile Picture" type="url" required
      v-model="editable.picture">
     <label for="picture">Picture:</label>
 </div>
- <!-- <div class="form-floating mb-3">
+ <div class="form-floating mb-3">
     <input name="cover-img" class="form-control" placeholder="cover Image" type="url" required
             v-model="editable.coverImg">
     <label for="cover-img">Cover Image:</label>
 </div>
  <div class="form-floating mb-3">
-    <input name="cover-img" class="form-control" placeholder="cover Image" type="url"  v-model="editable.socialPlatform">
-    <label for="cover-img">Social:</label>
-</div> -->
+    <input name="linkden" class="form-control" placeholder="linkden" type="url"  v-model="editable.linkden">
+    <label for="linkden">linkden:</label>
+</div>
+
+<div class="form-floating mb-3">
+    <input name="graduated" class="form-control" placeholder="graduated" type="boolean"  v-model="editable.graduated">
+    <label for="graduated">Graduated:</label>
+</div>
+
 </div>
 <div class="card-footer text-end">
  <button class="btn btn-outline-primary" type="submit">Save Account</button>
 </div>
-  
+   
+
   
    </form>
  </template>

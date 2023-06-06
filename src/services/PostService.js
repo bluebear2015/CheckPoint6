@@ -2,7 +2,7 @@ import { AppState } from "../AppState.js"
 import { Post } from "../models/Post.js"
 import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
-import { Profile } from "../models/Profile.js"
+
 
 
 class PostService{
@@ -45,6 +45,16 @@ async deletePost(postId) {
   AppState.posts = AppState.posts.filter(p => p.id != postId)
 }
 
+async likePost(postId) {
+  const res = await api.post(`api/posts/:id/like`)
+  AppState.posts = res.data.posts.map(p => new Post(p))
+
+  logger.log('[liking post]', res.data.posts)
+}
+
+
+
+
 async searchPosts(searchTerm) {
 
   const res = await api.get('api/posts/', {
@@ -56,11 +66,13 @@ async searchPosts(searchTerm) {
   logger.log('[SEARCHING Posts]', res.data)
 
   AppState.query = searchTerm 
+
+  AppState.previousPageUrl = res.data.older;
+  AppState.nextPageUrl = res.data.newer;
     AppState.posts = res.data.posts.map(p => new Post(p))
    
 
 }
-
 }
 
 

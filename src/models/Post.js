@@ -6,7 +6,13 @@ export class Post {
     this.likeIds = data.likeIds
     this.body = data.body
     this.creator = data.creator || {}
-    this.createdAt = data.createdAt
-    this.updatedAt = data.updatedAt
+    this.createdAt = new Date(data.createdAt).toLocaleString(undefined, {
+      timeStyle: 'short',
+      dateStyle: 'medium',
+    });
+    this.updatedAt = new Date().toLocaleString(undefined, {
+      timeStyle: 'short',
+      dateStyle: 'medium',
+    });
   }
 }

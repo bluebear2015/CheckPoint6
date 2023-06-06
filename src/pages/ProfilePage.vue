@@ -1,7 +1,11 @@
 <template>
     <div class="profilePage mainStyle">
       <div class="container">
-  
+        <div class="p-4 justify-content-between d-flex ">
+    <button :disabled="!previousUrl" @click="changePage(previousUrl)" class="pFont btn fs-4 m-2 btn-secondary">Older Posts</button>
+    <button :disabled="!nextUrl" @click="changePage(nextUrl)" class="pFont btn fs-4 m-2 btn-secondary">New Posts</button>
+   
+  </div>
   
         <div class="row">
           <div class="col-6  justify-content-center " v-if="profile">
@@ -63,8 +67,23 @@ import { Account } from '../models/Account.js';
       })
   
       return {
+        async changePage(url) {
+        try {
+          await postService.changePage(url)
+        } catch (error) {
+          Pop.error(error)
+        }
+    
+    },
+        
+        
         profile: computed(() => AppState.activeProfile),
-        posts: computed(() => AppState.posts)
+        posts: computed(() => AppState.posts),
+     previousUrl: computed(() => AppState.previousPageUrl),
+      nextUrl: computed(() => AppState.nextPageUrl),
+
+
+
   
       }
     }

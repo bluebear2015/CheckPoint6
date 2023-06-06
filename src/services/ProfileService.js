@@ -10,6 +10,14 @@ class ProfileService {
       logger.log(res.data)
       AppState.activeProfile = new Profile(res.data)
     }
+    async changePage(url) {
+      const res = await api.get(url);
+      // logger.log(res.data);
+      AppState.posts = res.data.posts;
+      AppState.previousPageUrl = res.data.older;
+      AppState.nextPageUrl = res.data.newer;
+    }
+  
   
   
   

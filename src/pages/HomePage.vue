@@ -1,7 +1,7 @@
 <template>
   <main class="container-fluid mainStyle">
     <section class="row justify-content-between pt-5">
-      <div class="col-4">
+      <div class="col-4 ">
         <button @click="showSearchBar = !showSearchBar" class="pFont text-end position-relative btn btn-secondary fs-5 offset-1">search</button>
         <SearchBar v-show="showSearchBar" />
         
@@ -52,7 +52,6 @@ import { ref } from 'vue';
 import PostCard from '../components/PostCard.vue'
 import PostForm from '../components/PostForm.vue'
 import { accountService } from '../services/AccountService.js';
-import { logger } from '../utils/Logger.js';
 import SearchBar from '../components/SearchBar.vue';
 export default {
   components: {PostCard, PostForm , SearchBar},
@@ -75,8 +74,11 @@ async function getPosts() {
 }
 
 
+
 onMounted(() => {
 getPosts()
+
+
 checkLoginStatus();
 });
     return {

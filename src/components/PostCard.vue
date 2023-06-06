@@ -9,7 +9,7 @@
       <div class=" p-3">
         <img class="img-fluid" :src="postProp?.imgUrl" alt="">
         <h5 class="my-3 border d-flex"> Likes {{ postProp?.likeIds.length }} </h5>
-        <span> <button > 👍🏾👍🏾👍🏾 </button> </span>
+        <span> <button  @click="likePost(postProp?.likeIds)" > 👍🏾👍🏾👍🏾 </button> </span>
       </div>
       <div class=" d-flex flex-column justify-content-flex-end">
         <p>{{ postProp?.body }}</p>
@@ -19,7 +19,7 @@
           <router-link :to="{ name: 'Profile', params: { id: postProp?.creatorId } }">
             <div class="text-end">
           <h5>{{ postProp?.creator.name }}</h5>
-          <p>{{ postProp?.createdAt }}</p>
+          <p>{{ postProp?.createdAt}}</p>
         </div>
             <img class="creator-picture rounded-circle" :src="postProp?.creator.picture">
           </router-link>
@@ -58,6 +58,17 @@ return{
                     Pop.toast(error.message, 'error')
                 }
             },
+            async likePost(postId) {
+                try {
+                    await postService.likePost(postId)
+                } catch (error) {
+                    logger.error(error)
+                    Pop.toast(error.message, 'error')
+                }
+            },
+
+
+            
 
             account: computed(() => AppState.account)
 

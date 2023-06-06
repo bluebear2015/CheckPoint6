@@ -12,6 +12,18 @@ export class Profile {
       this.linkedin = data.linkedin
       this.class = data.class
       this.email = data.email
+      this.github = data.github
+      this.graduated = data.graduated
+      this.coverImg = data.coverImg
+      this.graduated = data.graduated ? "Graduated" : "Not Graduated";
+      this.createdAt = new Date(data.createdAt).toLocaleString(undefined, {
+        timeStyle: 'short',
+        dateStyle: 'medium',
+      });
+      this.updatedAt = new Date().toLocaleString(undefined, {
+        timeStyle: 'short',
+        dateStyle: 'medium',
+      });
       
   
     }

@@ -2,11 +2,11 @@
     <!-- NOTE .prevent is the same as saying 'window.event.preventDefault()' -->
     <form @submit.prevent="searchPosts()">
         
-           
+           <div class="p-3">
             
         <input class="w-100" type="text" v-model="search" placeholder="Search..." />
-      
-        <button class="btn btn-outline-success" type="submit">
+    </div>
+        <button class=" btn btn-outline-secondary" type="submit">
                 <i class="mdi mdi-magnify"></i>
     </button>
 
